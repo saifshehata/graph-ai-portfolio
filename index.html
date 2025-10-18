@@ -57,9 +57,16 @@
       display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; border:1px solid var(--border); background: var(--card);
     }
 
-    $1
-    .avatar{width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:14px;border:3px solid var(--bg);box-shadow:0 0 0 4px rgba(124,92,255,0.45), 0 10px 30px rgba(0,0,0,0.35);background:linear-gradient(135deg, rgba(124,92,255,.35), rgba(31,224,163,.35));}
-    @media (max-width: 640px){.avatar{width:96px;height:96px;margin-bottom:12px}}
+    /* Hero */
+    .hero{padding: 80px 0 40px}
+    .hero .grid{display:grid; grid-template-columns: 1.1fr 0.9fr; gap:34px; align-items:center}
+    .badge{display:inline-flex; align-items:center; gap:10px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); padding:8px 12px; border-radius:999px; font-size:14px; color:var(--muted)}
+    .badge .dot{width:8px; height:8px; border-radius:999px; background:var(--accent-2); box-shadow:0 0 10px var(--accent-2)}
+    .hero h1{font-size: clamp(28px, 5vw, 56px);}
+    .hero p.lede{font-size: clamp(16px, 2.2vw, 20px); margin: 12px 0 24px}
+    /* Small avatar tucked into the facts card */
+    .avatar-chip{position:absolute; top:16px; right:16px; width:72px; height:72px; border-radius:50%; object-fit:cover; border:2px solid var(--border); box-shadow:0 6px 18px rgba(0,0,0,0.28)}
+    @media (max-width:640px){ .avatar-chip{width:56px; height:56px; top:12px; right:12px} }
 
     .cta{display:flex; gap:12px; flex-wrap:wrap}
     .btn{
@@ -128,7 +135,10 @@
   </nav>
 
   <!-- Hero -->
-  $1<img class="avatar" src="https://github.com/saifshehata/graph-ai-portfolio/blob/main/photo_saif.jpg?raw=true" alt="Portrait of Saif Shehata"/>
+  <header class="hero">
+    <div class="container">
+      <div class="grid">
+        <div>
           <div class="badge"><span class="dot"></span> Live 8‑week cohort · No‑code to code‑assisted AI</div>
           <h1>Generative AI for Work & Research</h1>
           <p class="lede">A curated portfolio of my learning journey and projects—combining reproducible data science with practical AI tools for automation, analysis and communication.</p>
@@ -138,7 +148,8 @@
           </div>
         </div>
         <div>
-          <div class="card" style="padding:24px">
+          <div class="card" style="padding:24px; position:relative">
+            <img class="avatar-chip" src="https://github.com/saifshehata/graph-ai-portfolio/blob/main/photo_saif.jpg?raw=true" alt="Portrait of Saif Shehata"/>
             <h3 style="margin-bottom:8px">Quick facts</h3>
             <div class="two">
               <div>
