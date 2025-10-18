@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Saif Shehata – Generative AI for Work & Research</title>
+  <meta name="description" content="One‑page portfolio for the Generative AI for Work & Research course with about, syllabus, weekly submissions, and projects."/>
+  <style>
+    :root{
+      --bg: #0b0e16;
+      --fg: #e9edf1;
+      --muted: #b6c0cc;
+      --accent: #7c5cff;
+      --accent-2: #1fe0a3;
+      --card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.1);
+      --shadow: 0 10px 30px rgba(0,0,0,0.25);
+      --radius: 18px;
+      --maxw: 1100px;
+    }
+
+    /* Global */
+    html,body{height:100%;}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--fg); background: var(--bg);
+      background-image:
+        radial-gradient(1200px 500px at 10% -10%, rgba(124,92,255,0.25), transparent 60%),
+        radial-gradient(800px 400px at 90% 10%, rgba(31,224,163,0.18), transparent 60%),
+        radial-gradient(600px 300px at 50% 100%, rgba(255,114,98,0.15), transparent 60%);
+      background-attachment: fixed;
+    }
+    a{color:inherit; text-decoration: none}
+    img{max-width:100%; display:block}
+    .container{max-width: var(--maxw); margin: 0 auto; padding: 0 22px}
+    section{padding: 80px 0}
+    h1,h2,h3{line-height:1.1; margin:0 0 12px}
+    p{color:var(--muted); line-height:1.7}
+
+    /* Top Nav */
+    .nav{
+      position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(11,14,22,0.9), rgba(11,14,22,0.6));
+      border-bottom:1px solid var(--border);
+    }
+    .nav .inner{display:flex; align-items:center; justify-content:space-between; padding: 14px 0}
+    .brand{display:flex; gap:10px; align-items:center}
+    .brand .logo{
+      width:36px; height:36px; border-radius:10px; background:
+        conic-gradient(from 210deg, var(--accent), var(--accent-2), #ff9a62, var(--accent));
+      box-shadow: inset 0 0 20px rgba(255,255,255,0.15), var(--shadow);
+    }
+    .brand b{letter-spacing:0.2px}
+    .nav a{opacity:0.9}
+    .nav .links{display:flex; gap: 18px; align-items:center}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; border:1px solid var(--border); background: var(--card);
+    }
+
+    /* Hero */
+    .hero{padding: 80px 0 40px}
+    .hero .grid{display:grid; grid-template-columns: 1.1fr 0.9fr; gap:34px; align-items:center}
+    .badge{display:inline-flex; align-items:center; gap:10px; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); padding:8px 12px; border-radius:999px; font-size:14px; color:var(--muted)}
+    .badge .dot{width:8px; height:8px; border-radius:999px; background:var(--accent-2); box-shadow:0 0 10px var(--accent-2)}
+    .hero h1{font-size: clamp(28px, 5vw, 56px);}
+    .hero p.lede{font-size: clamp(16px, 2.2vw, 20px); margin: 12px 0 24px}
+    .cta{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; border:1px solid var(--border); background:var(--card);
+      transition: transform .15s ease, box-shadow .15s ease; cursor:pointer
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: var(--shadow)}
+    .btn.primary{background: linear-gradient(135deg, rgba(124,92,255,0.35), rgba(31,224,163,0.25)); border-color: transparent}
+
+    /* Cards */
+    .cards{display:grid; grid-template-columns: repeat(3, 1fr); gap:16px}
+    .card{background:var(--card); border:1px solid var(--border); border-radius: var(--radius); padding:20px; box-shadow: var(--shadow)}
+
+    /* Two-col */
+    .two{display:grid; grid-template-columns: 1fr 1fr; gap:22px}
+
+    /* Timeline */
+    .timeline{position:relative; margin: 8px 0}
+    .timeline:before{content:""; position:absolute; left:18px; top:0; bottom:0; width:2px; background:linear-gradient(180deg, var(--accent), transparent)}
+    .tl-item{position:relative; padding-left:50px; margin: 22px 0}
+    .tl-item .dot{position:absolute; left:10px; top:6px; width:16px; height:16px; border-radius:999px; background: radial-gradient(circle at 40% 40%, #fff, var(--accent)); border:2px solid #1a1f2b}
+
+    /* Projects */
+    .projects{display:grid; grid-template-columns: repeat(12, 1fr); gap:18px}
+    .project{grid-column: span 6; background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border:1px solid var(--border); border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow); display:flex; flex-direction:column}
+    .project .thumb{aspect-ratio: 16/9; background:
+      linear-gradient(135deg, rgba(124,92,255,0.25), rgba(31,224,163,0.2)),
+      radial-gradient(400px 160px at 80% 20%, rgba(255,154,98,0.3), transparent 60%),
+      linear-gradient(0deg, rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+      display:flex; align-items:center; justify-content:center; font-weight:700; letter-spacing:.3px
+    }
+    .project .body{padding:16px}
+    .tag{display:inline-flex; padding:4px 8px; font-size:12px; color:#dfe7ff; border:1px solid var(--border); background: rgba(255,255,255,0.05); border-radius:999px; margin-right:8px}
+
+    /* Footer */
+    footer{border-top:1px solid var(--border); padding:40px 0; color:var(--muted)}
+
+    /* Responsive */
+    @media (max-width: 1000px){
+      .hero .grid{grid-template-columns: 1fr}
+      .cards{grid-template-columns: 1fr 1fr}
+      .projects .project{grid-column: span 12}
+      .two{grid-template-columns: 1fr}
+    }
+    @media (max-width: 640px){
+      .cards{grid-template-columns: 1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="container inner">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <b>Saif Shehata</b>
+        <span style="opacity:.6">· Generative AI for Work & Research</span>
+      </div>
+      <div class="links">
+        <a class="pill" href="#about">About</a>
+        <a class="pill" href="#course">Course</a>
+        <a class="pill" href="#weeks">Weekly</a>
+        <a class="pill" href="#projects">Projects</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <div class="grid">
+        <div>
+          <div class="badge"><span class="dot"></span> Live 8‑week cohort · No‑code to code‑assisted AI</div>
+          <h1>Generative AI for Work & Research</h1>
+          <p class="lede">A curated portfolio of my learning journey and projects—combining reproducible data science with practical AI tools for automation, analysis and communication.</p>
+          <div class="cta">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn" href="#weeks">See Weekly Submissions</a>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="padding:24px">
+            <h3 style="margin-bottom:8px">Quick facts</h3>
+            <div class="two">
+              <div>
+                <p><b>Role:</b> Bioinformatician (CRO, industry & academia)</p>
+                <p><b>Tooling:</b> Python · R · Bash · Nextflow/Snakemake · Docker · AWS</p>
+                <p><b>Focus:</b> Multi‑omics analysis, QA/validation, reproducible pipelines</p>
+              </div>
+              <div>
+                <p><b>Communication:</b> Quarto/Markdown, dashboards, client‑ready reports</p>
+                <p><b>Interests:</b> GenAI for automation, research assistants, and data storytelling</p>
+                <p><b>Links:</b> <a href="https://www.linkedin.com/in/saifshehata" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://github.com/saifshehata" target="_blank" rel="noopener">GitHub</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About me -->
+  <section id="about">
+    <div class="container">
+      <h2>About me</h2>
+      <p>I’m Saifeldin (Saif) Shehata, a bioinformatician with experience spanning CRO projects, academia, and industry. I’ve delivered 20+ multi‑omics analyses (genomics, transcriptomics, proteomics), built and tested reproducible pipelines, and communicated results through clear, actionable reports and dashboards. I’m passionate about applying Generative AI to accelerate research—automating routine tasks, validating results with robust QA, and crafting transparent data stories.</p>
+      <div class="cards" style="margin-top:18px">
+        <div class="card">
+          <h3>Strengths</h3>
+          <p>Reproducible workflows (Docker, Nextflow/Snakemake), CI/CD, versioning, results traceability, and audit‑ready documentation.</p>
+        </div>
+        <div class="card">
+          <h3>Data Skills</h3>
+          <p>NGS processing, QC, association testing, functional analysis, biomarker discovery, text analytics, and automated reporting.</p>
+        </div>
+        <div class="card">
+          <h3>Communication</h3>
+          <p>Client‑facing presentations, interactive notebooks/dashboards, and concise write‑ups that connect findings to decisions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the course -->
+  <section id="course">
+    <div class="container">
+      <h2>About the course</h2>
+      <p>This 8‑week live cohort blends hands‑on workshops, help sessions, and a capstone showcase. The curriculum spans how LLMs work, document/web generation, AI‑assisted data analysis, literature/text mining, custom GPTs and chatbots, task automation, and research communication workflows.</p>
+      <div class="two" style="margin-top:16px">
+        <div class="card">
+          <h3 style="margin-bottom:6px">Modules & themes</h3>
+          <ul>
+            <li>Websites, structured documents & presentations with AI</li>
+            <li>AI‑automated data analysis & reporting</li>
+            <li>GenAI for research & text analysis</li>
+            <li>Custom GPTs, RAG & chatbots</li>
+            <li>AI for task automation & agents</li>
+            <li>GenAI for communication & outreach</li>
+            <li>Capstone project & showcase</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="margin-bottom:6px">Bootcamp features</h3>
+          <ul>
+            <li>Weekly live workshops & help sessions</li>
+            <li>Private community & personalized feedback</li>
+            <li>Capstone coaching & shareable certificate</li>
+            <li>Lifetime access to tutorial library</li>
+            <li>Grading: quizzes, assignments, participation & final project</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Weekly submissions -->
+  <section id="weeks">
+    <div class="container">
+      <h2>My weekly submissions</h2>
+      <p>Placeholders for now—links will be added as I publish each week’s work.</p>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="dot" aria-hidden="true"></div>
+          <h3>Week 1 · Websites, documents & presentations</h3>
+          <p class="muted">Placeholder – to be linked</p>
+        </div>
+        <div class="tl-item">
+          <div class="dot" aria-hidden="true"></div>
+          <h3>Week 2 · AI‑automated data analysis</h3>
+          <p class="muted">Placeholder – to be linked</p>
+        </div>
+        <div class="tl-item">
+          <div class="dot" aria-hidden="true"></div>
+          <h3>Week 3 · GenAI for research & text analysis</h3>
+          <p class="muted">Placeholder – to be linked</p>
+        </div>
+        <div class="tl-item">
+          <div class="dot" aria-hidden="true"></div>
+          <h3>Week 4 · Custom GPTs & chatbots</h3>
+          <p class="muted">Placeholder – to be linked</p>
+        </div>
+        <div class="tl-item">
+          <div class="dot" aria-hidden="true"></div>
+          <h3>Week 5 · AI for task automation</h3>
+          <p class="muted">Placeholder – to be linked</p>
+        </div>
+        <div class="tl-item">
+          <div class="dot" aria-hidden="true"></div>
+          <h3>Week 6 · Communication & outreach</h3>
+          <p class="muted">Placeholder – to be linked</p>
+        </div>
+        <div class="tl-item">
+          <div class="dot" aria-hidden="true"></div>
+          <h3>Week 7 · Capstone – build & iterate</h3>
+          <p class="muted">Placeholder – to be linked</p>
+        </div>
+        <div class="tl-item">
+          <div class="dot" aria-hidden="true"></div>
+          <h3>Week 8 · Capstone – presentation</h3>
+          <p class="muted">Placeholder – to be linked</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2>Project portfolio</h2>
+      <p>Selected work in AI‑assisted analysis, automation and data storytelling.</p>
+      <div class="projects" style="margin-top:18px">
+        <!-- Gapminder project (live link) -->
+        <article class="project">
+          <a class="thumb" href="https://saifshehata.github.io/graph_courses_python_final_project/final_project_dashboard.html#" target="_blank" rel="noopener" aria-label="Open Gapminder data analysis dashboard">
+            GAPMINDER · Python · DataViz
+          </a>
+          <div class="body">
+            <div style="margin-bottom:10px">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Plotting</span>
+            </div>
+            <h3 style="margin:0 0 6px">Assessing daily income vs. babies per woman</h3>
+            <p>Exploratory analysis and interactive figures using Gapminder—investigating how changes in daily income relate to fertility rates across countries and time.</p>
+            <p><a href="https://saifshehata.github.io/graph_courses_python_final_project/final_project_dashboard.html#" target="_blank" rel="noopener">Open dashboard ↗</a></p>
+          </div>
+        </article>
+        <!-- Placeholder cards -->
+        <article class="project">
+          <div class="thumb">PROJECT PLACEHOLDER</div>
+          <div class="body">
+            <div style="margin-bottom:10px"><span class="tag">Coming soon</span></div>
+            <h3 style="margin:0 0 6px">Project Title Placeholder #1</h3>
+            <p>Short description of the project and its goals. Will include links to code, report, and demo.</p>
+            <p><span class="tag">AI</span> <span class="tag">Automation</span> <span class="tag">Dashboard</span></p>
+          </div>
+        </article>
+        <article class="project">
+          <div class="thumb">PROJECT PLACEHOLDER</div>
+          <div class="body">
+            <div style="margin-bottom:10px"><span class="tag">Coming soon</span></div>
+            <h3 style="margin:0 0 6px">Project Title Placeholder #2</h3>
+            <p>Short description of the project and its goals. Will include links to code, report, and demo.</p>
+            <p><span class="tag">RAG</span> <span class="tag">Chatbot</span> <span class="tag">Knowledge Base</span></p>
+          </div>
+        </article>
+        <article class="project">
+          <div class="thumb">PROJECT PLACEHOLDER</div>
+          <div class="body">
+            <div style="margin-bottom:10px"><span class="tag">Coming soon</span></div>
+            <h3 style="margin:0 0 6px">Project Title Placeholder #3</h3>
+            <p>Short description of the project and its goals. Will include links to code, report, and demo.</p>
+            <p><span class="tag">NLP</span> <span class="tag">Summarization</span> <span class="tag">Pipelines</span></p>
+          </div>
+        </article>
+        <article class="project">
+          <div class="thumb">PROJECT PLACEHOLDER</div>
+          <div class="body">
+            <div style="margin-bottom:10px"><span class="tag">Coming soon</span></div>
+            <h3 style="margin:0 0 6px">Project Title Placeholder #4</h3>
+            <p>Short description of the project and its goals. Will include links to code, report, and demo.</p>
+            <p><span class="tag">Time‑series</span> <span class="tag">Forecasting</span> <span class="tag">Reports</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="y"></span> Saif Shehata · Portfolio for the "Generative AI for Work & Research" course. Connect on <a href="https://www.linkedin.com/in/saifshehata" target="_blank" rel="noopener">LinkedIn</a> or <a href="https://github.com/saifshehata" target="_blank" rel="noopener">GitHub</a>. (Email intentionally omitted.)</p>
+    </div>
+  </footer>
+
+  <script>
+    // Year stamp
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
